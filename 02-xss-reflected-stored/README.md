@@ -61,29 +61,49 @@ Verified the target was up by pinging it. Then opened the application in Firefox
 
 Created a test user and logged in to understand normal application behavior.
 
+![ping](Screenshots/ping.jpg)
+
+![webpage](Screenshots/webpage.jpg)
+
+![signup](Screenshots/signup.jpg)
+
+![login](Screenshots/login.jpg)
+
+![profile](Screenshots/profile.jpg)
+
 ### Step 2: Automated Detection with Xsser
 
 Used *Xsser*, an automated XSS detection tool, to scan the application:
 
-text
+```
 xsser -u "http://demo.ine.local" -g "/profile/1?name=XSS"
-
+```
 
 Xsser identified a possible XSS vector in the name parameter of the profile page URL.
+
+![xss](Screenshots/xss.jpg)
+
+![run](Screenshots/run.jpg)
+
+![found](Screenshots/found.jpg)
 
 Step 3: Exploiting Reflected XSS
 
 The profile page URL contained a name parameter:
 
-
-http://demo.ine.local/profile/1?name=John+Doe
-
+```
+http://demo/profile/1?name=J+o
+```
 
 I replaced the value with a JavaScript payload:
 
-html
+```
 <script>alert("XSS")</script>
+```
 
+![urlxss](Screenshots/urlxss.jpg)
+
+![attack](Screenshots/attack.jpg)
 
 Result: An alert box appeared in the browser — confirming the JavaScript executed.
 
@@ -93,11 +113,14 @@ Step 4: Exploiting Stored XSS
 
 Next, I went to the Sign-Up page and injected the payload into the email field:
 
-html
+```
 <script>alert("XSS")</script>
-
-
+```
 Completed the registration, then logged in with those credentials.
+
+![loginxss](Screenshots/loginxss.jpg)
+
+![attack](Screenshots/attack.jpg)
 
 Result: The alert executed immediately after login.
 
@@ -132,8 +155,3 @@ Tools Used
 - Kali Linux
 - Terminal
 
----
-
-Ethical Disclaimer
-
-This lab was performed in an isolated environment for educational purposes only. No real users or systems were affected.
