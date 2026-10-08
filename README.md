@@ -12,9 +12,9 @@ The goal is to build practical understanding of how web applications are attacke
 
 | # | Lab | Vulnerability / Focus | Tools |
 |---|-----|------------------------|-------|
-| 01 | [SQL Injection](01-sql-injection.md) | Authentication bypass, boolean-based, time-based | Python, Flask, SQLite, Kali Linux |
-| 02 | [Cross-Site Scripting (XSS)](02-xss-reflected-stored.md) | Reflected & Stored XSS | Xsser, Firefox |
-| 03 | [Automated Scan with OWASP ZAP](03-zap-automated-scan.md) | Automated scanning & Path Traversal | OWASP ZAP, Nmap |
+| 01 | [SQL Injection](01-sql-injection) | Authentication bypass, boolean-based, time-based | Python, Flask, SQLite, Kali Linux |
+| 02 | [Cross-Site Scripting (XSS)](02-xss-reflected-stored) | Reflected & Stored XSS | Xsser, Firefox |
+| 03 | [Automated Scan with OWASP ZAP](03-zap-automated-scan) | Automated scanning & Path Traversal | OWASP ZAP, Nmap |
 
 ---
 
