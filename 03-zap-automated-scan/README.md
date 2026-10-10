@@ -49,40 +49,65 @@ Path traversal is a web vulnerability where attackers manipulate file paths to a
 
 Pinged the target to confirm it was up. Then performed a port scan with Nmap to identify open services:
 
-text
+```
+ping demo
+```
+
+```
 nmap demo
+```
 
+![ping](Screenshots/ping.jpg)
 
-Port 80 (HTTP) was confirmed open.
+![nmap](Screenshots/nmap.jpg)
 
-Step 2: Explore the Application
+**- Port 80 (HTTP) was confirmed open -**
+
+### Step 2: Explore the Application
 
 Opened the application in Firefox. The application was a file viewer that allowed users to view files. Selected a file and clicked "View File" to observe normal behavior.
 
-Step 3: Launch ZAP Automated Scan
+![webpage](Screenshots/webpage.jpg)
+
+![select](Screenshots/select.jpg)
+
+![view](Screenshots/view.jpg)
+
+### Step 3: Launch ZAP Automated Scan
 
 Opened OWASP ZAP and selected Automated Scan.
 
 Entered the target URL and clicked Attack. ZAP began sending requests with various payloads, and a progress bar showed its progress.
 
-Step 4: Analyze Alerts
+![zap](Screenshots/zap.jpg)
+
+![auto_scan](Screenshots/auto_scan.jpg)
+
+
+### Step 4: Analyze Alerts
 
 Once the scan completed, ZAP displayed Alerts categorized by severity. One notable finding was Path Traversal.
 
 Double-clicked the alert to inspect it:
 
+![path](Screenshots/path.jpg)
+
+![response](Screenshots/response.jpg)
+
 - The response body showed a status code of 200.
 - The targeted URL was shown, along with the risk severity and confidence level.
 
-Step 5: Manually Confirm Path Traversal
+### Step 5: Manually Confirm Path Traversal
 
 Copied the targeted URL and opened it in the browser.
 
-Result: The browser displayed the contents of /etc/passwd — confirming the Path Traversal vulnerability.
+![url](Screenshots/url.jpg)
+
+**- Result: The browser displayed the contents of /etc/passwd — confirming the Path Traversal vulnerability. -**
 
 This demonstrated that anyone could read sensitive system files through the vulnerable parameter.
 
-Step 6: Generate Report
+### Step 6: Generate Report
 
 Inside ZAP, clicked the Generate Report option, then clicked Generate Report again.
 
@@ -91,6 +116,16 @@ A full report was generated in the browser, including:
 - Summary of findings
 - Vulnerability types with counts and severity
 - Vulnerable endpoints and payloads used
+
+![report](Screenshots/report.jpg)
+
+![new_report](Screenshots/new_report.jpg)
+
+![alerts](Screenshots/alerts.jpg)
+
+![types](Screenshots/types.jpg)
+
+![risk](Screenshots/risk.jpg)
 
 ---
 
